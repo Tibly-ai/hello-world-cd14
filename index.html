@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hello World — the friendliest first page on the internet. A celebration of every beginning, every first line of code, and every fresh start.">
+<title>Hello World — Every Great Thing Starts Here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --ink-soft: #55504a;
+    --paper: #faf7f2;
+    --paper-warm: #f3ede3;
+    --accent: #e85d3d;
+    --accent-deep: #c9451f;
+    --sun: #f4b942;
+    --leaf: #2f6b4f;
+    --card: #ffffff;
+    --line: #e5ddd0;
+    --radius: 18px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: "Fraunces", serif; line-height: 1.15; }
+
+  a { color: var(--accent-deep); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .brand {
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    box-shadow: 0 0 0 4px rgba(232, 93, 61, 0.18);
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-deep); }
+
+  /* Hero */
+  .hero {
+    padding: 96px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -160px; left: 50%;
+    transform: translateX(-50%);
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(244, 185, 66, 0.25) 0%, rgba(244, 185, 66, 0) 65%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+  .eyebrow {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--leaf);
+    background: rgba(47, 107, 79, 0.09);
+    border: 1px solid rgba(47, 107, 79, 0.22);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .hero h1 .wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2.4s ease-in-out infinite;
+  }
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero p.lede {
+    max-width: 560px;
+    margin: 20px auto 40px;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+  }
+  .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(232, 93, 61, 0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(232, 93, 61, 0.4); }
+  .btn-ghost {
+    color: var(--ink);
+    border: 1.5px solid var(--line);
+    background: var(--card);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-deep); }
+
+  /* Terminal card */
+  .terminal {
+    max-width: 540px;
+    margin: 64px auto 0;
+    background: #1e1b18;
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: 0 24px 60px rgba(28, 26, 23, 0.25);
+    overflow: hidden;
+  }
+  .terminal-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #2a2622;
+  }
+  .terminal-bar span { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-bar span:nth-child(1) { background: #ff5f57; }
+  .terminal-bar span:nth-child(2) { background: #febc2e; }
+  .terminal-bar span:nth-child(3) { background: #28c840; }
+  .terminal pre {
+    padding: 22px 24px 26px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.92rem;
+    color: #d8d2c8;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .terminal .cmt { color: #7a736a; }
+  .terminal .kw { color: #f4b942; }
+  .terminal .str { color: #8fce9c; }
+  .terminal .out { color: #e88b73; }
+
+  /* Section basics */
+  section { padding: 88px 0; }
+  .section-head { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .section-head p { color: var(--ink-soft); font-size: 1.08rem; }
+  .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-deep);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* Greetings grid */
+  .greetings { background: var(--paper-warm); }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(28, 26, 23, 0.08); }
+  .card .glyph {
+    font-family: "Fraunces", serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .card p { color: var(--ink-soft); font-size: 0.97rem; }
+  .card .lang {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--leaf);
+    display: block;
+    margin-top: 14px;
+  }
+
+  /* Story */
+  .story .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .story h2 { font-size: clamp(1.9rem, 4vw, 2.5rem); margin-bottom: 18px; }
+  .story p { color: var(--ink-soft); margin-bottom: 16px; }
+  .story blockquote {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-left: 4px solid var(--sun);
+    background: var(--paper-warm);
+    border-radius: 0 12px 12px 0;
+    font-family: "Fraunces", serif;
+    font-size: 1.1rem;
+  }
+  .story blockquote cite {
+    display: block;
+    margin-top: 8px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .story-visual {
+    background: linear-gradient(145deg, var(--accent) 0%, var(--accent-deep) 60%, #a83618 100%);
+    border-radius: var(--radius);
+    padding: 48px 36px;
+    color: #fff;
+    box-shadow: 0 24px 50px rgba(201, 69, 31, 0.3);
+  }
+  .story-visual .big {
+    font-family: "Fraunces", serif;
+    font-size: 3.4rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .story-visual ul { list-style: none; }
+  .story-visual li {
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.98rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .story-visual li strong { font-weight: 600; }
+
+  /* Voices */
+  .voices { background: var(--paper-warm); }
+  .voice-card { position: relative; }
+  .voice-card::before {
+    content: "\201C";
+    font-family: "Fraunces", serif;
+    font-size: 3.4rem;
+    color: var(--sun);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .voice-card p { font-size: 1rem; color: var(--ink); margin-bottom: 18px; }
+  .voice-card footer { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .a1 { background: var(--leaf); }
+  .a2 { background: var(--accent); }
+  .a3 { background: var(--sun); color: var(--ink); }
+  .voice-card footer div span { display: block; }
+  .voice-name { font-weight: 600; font-size: 0.93rem; }
+  .voice-role { font-size: 0.82rem; color: var(--ink-soft); }
+
+  /* Say hello */
+  .say-hello { text-align: center; }
+  .hello-box {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 56px 40px;
+    box-shadow: 0 18px 44px rgba(28, 26, 23, 0.07);
+  }
+  .hello-box h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 14px; }
+  .hello-box p { color: var(--ink-soft); margin-bottom: 28px; }
+  .contact-line {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    margin-top: 22px;
+    color: var(--ink-soft);
+  }
+  .contact-line a { text-decoration: none; font-weight: 500; }
+  .contact-line a:hover { text-decoration: underline; }
+
+  /* Footer */
+  footer.site {
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+    background: var(--paper);
+  }
+  footer.site .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  footer.site p { font-size: 0.88rem; color: var(--ink-soft); }
+  footer.site .foot-links { display: flex; gap: 22px; list-style: none; }
+  footer.site .foot-links a {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  footer.site .foot-links a:hover { color: var(--accent-deep); }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .grid-3 { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .story .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; }
+    section { padding: 64px 0; }
+    .hero { padding: 72px 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Hello World</a>
+    <ul class="nav-links">
+      <li><a href="#greetings">Greetings</a></li>
+      <li><a href="#story">The Story</a></li>
+      <li><a href="#voices">Voices</a></li>
+      <li><a href="#say-hello">Say Hello</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">// program executed successfully</span>
+      <h1><span class="wave" aria-hidden="true">👋</span> Hello, <em>World.</em></h1>
+      <p class="lede">Two words. One page. The oldest tradition on the internet, lovingly rendered in warm colors and semantic HTML. Welcome — you made it.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#say-hello">Say Hello Back</a>
+        <a class="btn btn-ghost" href="#story">Why These Two Words?</a>
+      </div>
+
+      <div class="terminal" role="img" aria-label="A terminal window showing a hello world program and its output">
+        <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <pre><span class="cmt"># the whole point of this website, in one line</span>
+<span class="kw">print</span>(<span class="str">"Hello, World!"</span>)
+
+<span class="cmt">$ python hello.py</span>
+<span class="out">Hello, World!</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="greetings" id="greetings">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Section 01 — Greetings</span>
+        <h2>One idea, spoken everywhere</h2>
+        <p>Every language, human or machine, has its own way of saying it. Here are a few of our favorites.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="glyph">Hola, Mundo</span>
+          <h3>Spanish</h3>
+          <p>Spoken by over half a billion people, and every one of their first programs looked exactly like this.</p>
+          <span class="lang">printf("Hola, Mundo\n");</span>
+        </article>
+        <article class="card">
+          <span class="glyph">こんにちは世界</span>
+          <h3>Japanese</h3>
+          <p>Konnichiwa, sekai. Proof that a greeting doesn't need the Latin alphabet to compile on the first try.</p>
+          <span class="lang">fmt.Println("こんにちは世界")</span>
+        </article>
+        <article class="card">
+          <span class="glyph">Salut, Monde</span>
+          <h3>French</h3>
+          <p>Somehow even a debug statement sounds elegant. The semicolon, of course, remains non-negotiable.</p>
+          <span class="lang">console.log("Salut, Monde");</span>
+        </article>
+        <article class="card">
+          <span class="glyph">Hallo, Welt</span>
+          <h3>German</h3>
+          <p>Efficient, precise, and delivered exactly on schedule — much like the language it's written in.</p>
+          <span class="lang">System.out.println("Hallo, Welt");</span>
+        </article>
+        <article class="card">
+          <span class="glyph">Habari, Dunia</span>
+          <h3>Swahili</h3>
+          <p>A greeting shared across East Africa, warm enough to make even a stack trace feel friendly.</p>
+          <span class="lang">puts "Habari, Dunia"</span>
+        </article>
+        <article class="card">
+          <span class="glyph">01001000 01101001</span>
+          <h3>Binary</h3>
+          <p>How your computer has been saying hello all along. It just needed someone to listen carefully.</p>
+          <span class="lang">// "Hi", if you were wondering</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <div>
+        <span class="kicker">Section 02 — The Story</span>
+        <h2>Where "Hello, World" came from</h2>
+        <p>In 1972, at Bell Labs, Brian Kernighan needed a tiny example program for a tutorial on the B programming language. He chose two words that would outlive the language itself. When they reappeared in <em>The C Programming Language</em> in 1978, a tradition was sealed forever.</p>
+        <p>Since then, "Hello, World" has been the first program written by nearly every programmer on Earth. It's a handshake between a human and a machine — the moment you learn that the thing on your desk will actually listen to you.</p>
+        <blockquote>
+          "I have a distinct memory of a cartoon showing an egg and a chick saying 'Hello, world.' It seemed like a natural thing."
+          <cite>— Brian Kernighan, on how it all started</cite>
+        </blockquote>
+      </div>
+      <aside class="story-visual" aria-label="Hello World facts">
+        <p class="big">50+ years of saying hi</p>
+        <ul>
+          <li><strong>1972</strong><span>First appears in a B tutorial at Bell Labs</span></li>
+          <li><strong>1978</strong><span>Immortalized in K&amp;R's C book</span></li>
+          <li><strong>~700</strong><span>Languages it's been written in</span></li>
+          <li><strong>1</strong><span>Line it usually takes</span></li>
+          <li><strong>∞</strong><span>Careers it has quietly launched</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="voices" id="voices">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Section 03 — Voices</span>
+        <h2>First words, fondly remembered</h2>
+        <p>We asked a few people about the first time they made a computer say hello.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card voice-card">
+          <p>I typed it, hit enter, and the words appeared on the screen. That was twenty years ago. I'm still chasing that exact feeling.</p>
+          <footer>
+            <span class="avatar a1" aria-hidden="true">M</span>
+            <div>
+              <span class="voice-name">Maya Okafor</span>
+              <span class="voice-role">Senior Engineer, wrote it in QBasic, 2004</span>
+            </div>
+          </footer>
+        </article>
+        <article class="card voice-card">
+          <p>Mine printed "Hello, Wrold" because of a typo, and honestly? The computer didn't judge me. It just did what I asked. I was hooked.</p>
+          <footer>
+            <span class="avatar a2" aria-hidden="true">D</span>
+            <div>
+              <span class="voice-name">Diego Ferreira</span>
+              <span class="voice-role">Bootcamp grad, wrote it in Python, 2022</span>
+            </div>
+          </footer>
+        </article>
+        <article class="card voice-card">
+          <p>I teach it every September. Thirty kids, thirty screens, and then — one by one — thirty little gasps. It never gets old.</p>
+          <footer>
+            <span class="avatar a3" aria-hidden="true">P</span>
+            <div>
+              <span class="voice-name">Priya Raman</span>
+              <span class="voice-role">CS Teacher, has written it ~400 times</span>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="say-hello" id="say-hello">
+    <div class="wrap">
+      <div class="hello-box">
+        <span class="kicker">Section 04 — Your Turn</span>
+        <h2>Go say it yourself</h2>
+        <p>You don't need permission, a degree, or expensive software. Open a browser console, a text editor, or a scrap of paper. Two words is all it takes to begin.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="mailto:hi@hello-world-cd14.sites.tibly.ai">Email Us a Hello</a>
+        </div>
+        <p class="contact-line">hi@hello-world-cd14.sites.tibly.ai &nbsp;·&nbsp; (555) 010-1972</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>© 2025 Hello World · Compiled with zero warnings and considerable affection.</p>
+    <ul class="foot-links">
+      <li><a href="#greetings">Greetings</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#say-hello">Say Hello</a></li>
+      <li><a href="#top">Back to top ↑</a></li>
+    </ul>
+  </div>
+</footer>
+
+  <script async src="https://api.tibly.ai/widget/v1.js"></script>
+</body>
+</html>
